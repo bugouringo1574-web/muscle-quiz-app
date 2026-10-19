@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>筋肉・骨格マスター！楽しくおぼえる人体の解剖学アプリ</title>
+  <meta name="description" content="小学6年生から楽しく筋肉・骨・筋の形状をマスターできる学習クイズアプリ。前面・裏面・骨格・形状の全問題、ふりがな付き、場所あてクイズ、暗記マスク、スマホ対応！">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header>
+    <div class="header-inner">
+      <div class="logo-area">
+        <div class="logo-icon">💪</div>
+        <div class="logo-title">
+          <h1>筋肉・骨格マスター！</h1>
+          <p class="logo-subtitle">筋肉（前面・裏面）・筋の形状・骨格を楽しく完全攻略！</p>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <!-- モード切替タブ -->
+        <div class="mode-tabs">
+          <button id="tabEncyclopedia" class="mode-tab-btn active" data-mode="encyclopedia">
+            📖 <span>ずかん</span>
+          </button>
+          <button id="tabQuiz" class="mode-tab-btn" data-mode="quiz">
+            🎯 <span>4択クイズ</span>
+          </button>
+          <button id="tabTapQuiz" class="mode-tab-btn" data-mode="tapquiz">
+            👆 <span>タップクイズ</span>
+          </button>
+        </div>
+
+        <!-- ツールボタン -->
+        <button id="maskToggleBtn" class="tool-btn" title="文字を隠してテストできます">
+          🙈 <span class="btn-text">文字をかくす</span>
+        </button>
+
+        <button id="soundToggleBtn" class="tool-btn active" title="効果音のオン・オフ">
+          🔊 <span class="btn-text">音：ON</span>
+        </button>
+
+        <!-- スマホ接続ボタン -->
+        <button id="mobileConnectBtn" class="tool-btn btn-mobile-connect" title="スマホのカメラでかざして遊べます">
+          📱 <span>スマホで開く</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- テーマ切り替えバー（前面・裏面・形状・骨） -->
+  <div class="theme-bar-wrapper">
+    <div id="themeTabs" class="theme-tabs">
+      <!-- JSで動的にボタン生成 -->
+    </div>
+  </div>
+
+  <!-- メインコンテンツ -->
+  <main class="app-container">
+
+    <!-- 左カラム：人体図・イラストカード -->
+    <section class="visual-card" aria-label="解剖図・イラスト表示エリア">
+      <div class="visual-header">
+        <div class="visual-title">
+          <span>🔍</span>
+          <span id="visualCardTitle">図を見て覚えよう！</span>
+        </div>
+        <div id="memoProgressText" class="zoom-hint">覚えた数: 0 / 18 個</div>
+      </div>
+
+      <div class="diagram-container" id="diagramContainer">
+        <!-- 実物教科書画像 -->
+        <img src="assets/textbook_original.jpg" alt="学習用解剖図" class="diagram-image" id="diagramImage">
+
+        <!-- クイズ時・暗記モード時に文字を完全に覆うマスクレイヤー -->
+        <div class="mask-container" id="maskContainer">
+          <!-- JSで動的にマスクを配置 -->
+        </div>
+
+        <!-- インタラクティブピンのレイヤー -->
+        <div class="pin-layer" id="pinLayer">
+          <!-- JSでピンを動的配置 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 右カラム：学習・クイズパネル -->
+    <section class="detail-card" aria-label="学習・クイズ操作パネル">
+
+      <!-- 1. 図鑑モードビュー -->
+      <div id="encyclopediaView" class="encyclopedia-view">
+        <div id="encycloContent">
+          <div class="encyclo-header">
+            <span id="encycloCategoryBadge" class="encyclo-category-badge">あたま・くび</span>
+            <div class="encyclo-title-row">
+              <h2 id="encycloName" class="encyclo-name"><ruby>前頭筋<rt>ぜんとうきん</rt></ruby></h2>
+              <button id="encycloCheckBtn" class="encyclo-check-btn">⚪ 覚えたらチェック！</button>
+            </div>
+          </div>
+
+          <!-- おぼえ方ヒント（小学6年生向け） -->
+          <div class="hint-box">
+            <div class="hint-box-title">
+              💡 <span>おぼえ方ヒント &amp; まめ知識</span>
+            </div>
+            <p id="encycloHint" class="hint-box-text">
+              「前の頭の筋肉」と書くよ。おでこを触って眉毛を上げてみよう！
+            </p>
+          </div>
+
+          <!-- 説明セクション -->
+          <div class="desc-section">
+            <div class="info-block">
+              <div class="info-label">どんな特徴・はたらき？</div>
+              <p id="encycloShortDesc" class="info-content">おでこの筋肉。眉毛を持ち上げて横じわを作るよ！</p>
+            </div>
+
+            <div class="info-block">
+              <div class="info-label">くわしい解説</div>
+              <p id="encycloDetail" class="info-content">収縮すると額（おでこ）に横じわが生じます。びっくりした表情をするときに動くよ！</p>
+              <div id="encycloTextbook" class="textbook-quote">教科書の解説：「収縮すると額に横じわが生じる。」</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. 4択クイズモードビュー -->
+      <div id="quizView" class="quiz-view" style="display: none;">
+        <div class="quiz-progress-bar-container">
+          <div class="quiz-progress-track">
+            <div id="quizProgressFill" class="quiz-progress-fill"></div>
+          </div>
+          <div id="quizProgressText" class="quiz-progress-text">1 / 18 問</div>
+          <div id="quizScoreText" class="quiz-score-badge">正解: 0問</div>
+        </div>
+
+        <div class="quiz-question-box">
+          <div id="quizQNum" class="quiz-q-num">第 1 問</div>
+          <h2 id="quizQTitle" class="quiz-q-title">ピカピカ赤く光っている場所の名前はなーんだ？</h2>
+          <p class="quiz-q-hint-sub">図の中で赤く点滅しているピンの位置を見てね！</p>
+        </div>
+
+        <!-- 4択ボタン -->
+        <div id="quizOptionsGrid" class="quiz-options-grid">
+          <!-- JSで動的にボタン生成 -->
+        </div>
+
+        <!-- フィードバック -->
+        <div id="quizFeedback" class="quiz-feedback">
+          <div id="feedbackStatus" class="feedback-status">💮 せいかい！</div>
+          <div id="feedbackDetail" class="feedback-detail">解説文</div>
+          <button id="nextQBtn" class="next-q-btn">つぎの問題へ 👉</button>
+        </div>
+      </div>
+
+      <!-- 3. タップクイズモードビュー -->
+      <div id="tapQuizView" class="quiz-view" style="display: none;">
+        <div class="quiz-progress-bar-container">
+          <div class="quiz-progress-track">
+            <div id="tapProgressFill" class="quiz-progress-fill"></div>
+          </div>
+          <div id="tapProgressText" class="quiz-progress-text">1 / 18 問</div>
+        </div>
+
+        <div class="quiz-question-box">
+          <div class="quiz-q-num">場所あてチャレンジ</div>
+          <h2 id="tapQTitle" class="quiz-q-title"><ruby>大胸筋<rt>だいきょうきん</rt></ruby> はどこ？</h2>
+          <p id="tapQHint" class="quiz-q-hint-sub">👇 図のピン（○）を直接タップして答えてね！</p>
+        </div>
+
+        <div id="tapFeedback" class="quiz-feedback">
+          <div id="tapFeedbackStatus" class="feedback-status">💮 せいかい！</div>
+          <div id="tapFeedbackDetail" class="feedback-detail">解説文</div>
+          <button id="tapNextQBtn" class="next-q-btn">つぎの問題へ 👉</button>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- クリアモーダル -->
+  <div id="clearModal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-trophy">🏆</div>
+      <h3 id="modalTitle" class="modal-title">よくがんばったね！</h3>
+      <div id="modalScore" class="modal-score">18 / 18 問 正解</div>
+      <p id="modalMsg" class="modal-msg">メッセージ</p>
+      <div class="modal-buttons">
+        <button id="modalRetryBtn" class="modal-btn modal-btn-primary">もう一回ちょうせん！</button>
+        <button id="modalSwitchBtn" class="modal-btn modal-btn-secondary">ずかんで復習する</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- スマホ連携用QRコードモーダル -->
+  <div id="qrModal" class="modal-overlay">
+    <div class="modal-box">
+      <div style="font-size: 2.5rem; margin-bottom: 6px;">📱</div>
+      <h3 class="modal-title">スマホで遊ぼう！</h3>
+      <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 12px;">
+        同じWi-Fi（自宅のネット）につないだスマホのカメラで、下のQRコードを読み取ってね！
+      </p>
+      <div id="qrContainer" class="qr-container"></div>
+      <div id="qrUrlText" class="qr-url-box">http://192.168.10.111:8085/</div>
+      <button id="qrCloseBtn" class="modal-btn modal-btn-primary" style="width: 100%;">とじる</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>💡 人体の骨格筋（前面・裏面）・筋の形状・骨格マスター学習アプリ | 小学6年生向けふりがな＆まめ知識つき</p>
+  </footer>
+
+  <!-- スクリプト読み込み -->
+  <script src="js/qrcode.min.js"></script>
+  <script src="js/quiz_data.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
