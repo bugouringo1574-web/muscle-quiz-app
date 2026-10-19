@@ -1,5 +1,8 @@
-// 全学習テーマのマスターデータ定義
+// 全学習テーマのマスターデータ定義（全5テーマ・計72問）
 const APP_THEMES = [
+  // ========================================================
+  // 1. 筋肉（前面）
+  // ========================================================
   {
     id: "muscle_front",
     name: "筋肉（前面）",
@@ -7,7 +10,6 @@ const APP_THEMES = [
     desc: "お腹や胸、太もも前側の主要な骨格筋（全18部位）",
     image: "assets/textbook_original.jpg",
     aspectRatio: "719 / 1024",
-    // クイズ時に自動で隠す教科書の文字領域
     masks: [
       { top: "5%", left: "0%", width: "32%", height: "42%" },    // 表情筋〜外腹斜筋
       { top: "58%", left: "0%", width: "32%", height: "18%" },   // 長内転筋〜縫工筋
@@ -318,7 +320,7 @@ const APP_THEMES = [
         categoryColor: "#4D96FF",
         x: 71.0, y: 22.0,
         shortDesc: "二の腕の裏側にある筋肉！ひじをピンと伸ばすよ！",
-        detail: "上腕の後面にある強大な筋肉。頭（始まり）が3つ（長頭・外側頭・内側頭）あるので三頭筋と呼びます。",
+        detail: "上腕の後面にある強大な筋肉。頭（始まり）が3つあるので三頭筋と呼びます。",
         hint: "力こぶ（二頭筋）の裏側！頭が「3つ」あるから上腕三頭筋！",
         textbookNote: "二の腕の裏側にあり、ひじ関節を力強く伸ばす筋肉。"
       },
@@ -383,7 +385,7 @@ const APP_THEMES = [
         categoryColor: "#FFD93D",
         x: 61.5, y: 54.5,
         shortDesc: "太ももの裏側の外側にある筋肉！ひざを曲げるよ！",
-        detail: "太ももの裏側（外側）を走る筋肉。頭が2つ（長頭・短頭）あります。ハムストリングスの外側部分。",
+        detail: "太ももの裏側（外側）を走る筋肉。ハムストリングスの外側部分。",
         hint: "腕にあるのが上腕二頭筋、太ももにあるのが「大腿二頭筋」！",
         textbookNote: "太ももの裏側外側にあり、ひざを曲げる。"
       },
@@ -422,7 +424,7 @@ const APP_THEMES = [
         categoryColor: "#FFD93D",
         x: 44.0, y: 74.0,
         shortDesc: "ふくらはぎの表面にある筋肉！走ったりジャンプするときに活躍！",
-        detail: "ふくらはぎの筋。この筋の深層にあるヒラメ筋とともに下腿三頭筋をつくる。この筋の停止腱がアキレス腱である。",
+        detail: "ふくらはぎの筋。深層のヒラメ筋とともに下腿三頭筋をつくり、停止腱がアキレス腱となる。",
         hint: "「こむら返り」でおなじみのふくらはぎの筋肉！ヒラメ筋と合体してアキレス腱になるよ！",
         textbookNote: "ふくらはぎの筋。深層のヒラメ筋とともに下腿三頭筋をつくる。停止腱がアキレス腱。"
       }
@@ -482,7 +484,7 @@ const APP_THEMES = [
         categoryColor: "#8B5CF6",
         x: 17.5, y: 55.0,
         shortDesc: "鳥の羽のように、短い筋線維が斜めにびっしり並ぶ筋肉！",
-        detail: "短く数の多い筋線維が、中央の腱に向かって鳥の羽のように斜めに走行している筋。断面積が大きく強い力を出せます。",
+        detail: "短く数の多い筋線維が、中央の腱に向かって鳥の羽のように斜めに走行している筋。強い力を出せます。",
         hint: "「鳥の羽（はね）」にそっくりだから羽状筋！大腿直筋などが代表的。",
         textbookNote: "短く数の多い筋線維が、鳥の羽のように斜めに走行している筋。"
       },
@@ -516,13 +518,279 @@ const APP_THEMES = [
   },
 
   // ========================================================
-  // 4. 人体の骨格（後面）
+  // 4. 骨格（前面） ★テスト出題番号 1〜19 完全対応！
+  // ========================================================
+  {
+    id: "skeleton_front",
+    name: "骨格（前面）",
+    icon: "💀",
+    desc: "頭から足先まで、体の前側にある骨と骨格構造（テスト番号1〜19番）",
+    image: "assets/skeleton_front.jpg",
+    aspectRatio: "746 / 1024",
+    masks: [
+      { top: "6%", left: "0%", width: "26%", height: "80%" },    // 左側の解説文（1,4,5,9）
+      { top: "34%", right: "0%", width: "26%", height: "20%" },  // 前腕・しゃっこつの解説
+      { top: "47%", right: "0%", width: "26%", height: "10%" }   // 手の骨
+    ],
+    items: [
+      {
+        id: "bone_f_1",
+        name: "頭蓋骨",
+        kana: "とうがいこつ",
+        category: "head_bone",
+        categoryName: "頭・胸の骨",
+        categoryColor: "#EC4899",
+        x: 14.5, y: 6.8,
+        shortDesc: "【赤枠 1 番】頭部の骨全体！15種23個の骨からなるよ。",
+        detail: "脳を包む脳頭蓋と、顔をつくる顔面頭蓋からなる骨格。頭部の骨全体を頭蓋骨と呼び、15種23個の骨から構成されます。",
+        hint: "テスト番号【1】番！「頭（あたま）のフタ（蓋）の骨」！大切な脳を守るよ！",
+        textbookNote: "頭部の骨全体を頭蓋骨という。15種23個の骨からなる。"
+      },
+      {
+        id: "bone_f_2",
+        name: "胸骨",
+        kana: "きょうこつ",
+        category: "head_bone",
+        categoryName: "頭・胸の骨",
+        categoryColor: "#EC4899",
+        x: 29.5, y: 19.5,
+        shortDesc: "【赤枠 2 番】胸のど真ん中にあるネクタイのような平たい骨！",
+        detail: "胸部前面の中央にある細長い扁平骨。左右の肋軟骨と結合し、胸郭の前面を構成します。",
+        hint: "テスト番号【2】番！胸の真ん中にある骨。心臓マッサージで圧迫する場所だよ！",
+        textbookNote: "胸部前面正中にある扁平骨。肋骨と関節する。"
+      },
+      {
+        id: "bone_f_3",
+        name: "肋骨",
+        kana: "ろっこつ",
+        category: "head_bone",
+        categoryName: "頭・胸の骨",
+        categoryColor: "#EC4899",
+        x: 29.5, y: 22.0,
+        shortDesc: "【赤枠 3 番】胸のまわりをカゴのように囲む12対のあばら骨！",
+        detail: "左右12対（24本）あり、胸椎から始まって前方へ弓状に伸び、胸骨へとつながります。",
+        hint: "テスト番号【3】番！いわゆる「あばら骨」！肺や心臓を守るよ！",
+        textbookNote: "左右12対あり、胸郭をつくる弓状の骨。"
+      },
+      {
+        id: "bone_f_4",
+        name: "胸郭",
+        kana: "きょうかく",
+        category: "head_bone",
+        categoryName: "頭・胸の骨",
+        categoryColor: "#EC4899",
+        x: 12.5, y: 21.0,
+        shortDesc: "【赤枠 4 番】12対の肋骨・12個の胸椎・1個の胸骨が合体した鳥かご状の枠組み！",
+        detail: "胸部の骨格全体。12対の肋骨と12個の胸椎、1個の胸骨からなり、胸部の枠組み（胸郭）をつくります。",
+        hint: "テスト番号【4】番！心臓や肺が入っている「鳥かごのような枠組み」全体のこと！",
+        textbookNote: "12対の肋骨と12個の胸椎、1個の胸骨からなり、胸部の枠組みをつくる。"
+      },
+      {
+        id: "bone_f_5",
+        name: "脊柱",
+        kana: "せきちゅう",
+        category: "spine",
+        categoryName: "背骨・体幹",
+        categoryColor: "#F59E0B",
+        x: 11.5, y: 34.0,
+        shortDesc: "【赤枠 5 番】椎骨がつながってできた「背骨」全体！",
+        detail: "椎骨という短骨がつながってできている。椎骨は上から頸椎（7個）、胸椎（12個）、腰椎（5個）、仙骨（1個）、尾骨と分けられます。",
+        hint: "テスト番号【5】番！首（7）・胸（12）・腰（5）・仙骨・尾骨からなる「背骨」全体！",
+        textbookNote: "椎骨がつながってできた人体の中心の支柱。"
+      },
+      {
+        id: "bone_f_6",
+        name: "腸骨",
+        kana: "ちょうこつ",
+        category: "pelvis",
+        categoryName: "骨盤・腰の骨",
+        categoryColor: "#10B981",
+        x: 27.5, y: 57.0,
+        shortDesc: "【赤枠 6 番】骨盤の上部にある大きなうちわのような骨！",
+        detail: "寛骨の上部を占める扇形の大きな骨。上縁の腸骨稜は「腰に手をあてる」ときに触れます。",
+        hint: "テスト番号【6】番！骨盤の上のほうにある広い骨。「腰に手をあてて」触れる場所！",
+        textbookNote: "寛骨の上部を構成する大きな骨。"
+      },
+      {
+        id: "bone_f_7",
+        name: "恥骨",
+        kana: "ちこつ",
+        category: "pelvis",
+        categoryName: "骨盤・腰の骨",
+        categoryColor: "#10B981",
+        x: 27.5, y: 60.5,
+        shortDesc: "【赤枠 7 番】骨盤の前下部にある骨！左右が結合しているよ。",
+        detail: "寛骨の前下部を構成する骨。左右の恥骨が正中で結合（恥骨結合）しています。",
+        hint: "テスト番号【7】番！骨盤の前側の骨。左右が真ん中で合体しているよ！",
+        textbookNote: "寛骨の前下部を構成する骨。"
+      },
+      {
+        id: "bone_f_8",
+        name: "坐骨",
+        kana: "ざこつ",
+        category: "pelvis",
+        categoryName: "骨盤・腰の骨",
+        categoryColor: "#10B981",
+        x: 27.5, y: 64.0,
+        shortDesc: "【赤枠 8 番】座ったときに椅子にあたる骨！",
+        detail: "寛骨の後下部を構成する頑丈な骨。座骨結節は座ったときに体重を直接支えます。",
+        hint: "テスト番号【8】番！「座る（ざ）骨」と書くよ！イスに座ると体重がのる骨！",
+        textbookNote: "寛骨の後下部を構成する骨。座骨結節をもつ。"
+      },
+      {
+        id: "bone_f_9",
+        name: "骨盤",
+        kana: "こつばん",
+        category: "pelvis",
+        categoryName: "骨盤・腰の骨",
+        categoryColor: "#10B981",
+        x: 8.5, y: 60.5,
+        shortDesc: "【赤枠 9 番】体幹の底にあり、内臓を下から支える器状の骨格！",
+        detail: "体幹の底にあり内臓を支える。寛骨は腸骨・坐骨・恥骨が結合したもの。仙骨とともに骨盤を形成します。",
+        hint: "テスト番号【9】番！腸骨・恥骨・坐骨（寛骨）と仙骨が合体した大きな受け皿！",
+        textbookNote: "体幹の底にあり、内臓を支える骨格。"
+      },
+      {
+        id: "bone_f_10",
+        name: "鎖骨",
+        kana: "さこつ",
+        category: "arm_bone",
+        categoryName: "うでの骨",
+        categoryColor: "#3B82F6",
+        x: 72.5, y: 12.5,
+        shortDesc: "【赤枠 10 番】首の下で横に伸びるS字形の骨！",
+        detail: "胸骨と肩甲骨を連結する骨。腕を胸から離して自由に動かせるように支えています。",
+        hint: "テスト番号【10】番！首の下にある横長の骨！",
+        textbookNote: "胸骨と肩甲骨を連結する横長の骨。"
+      },
+      {
+        id: "bone_f_11",
+        name: "肩甲骨",
+        kana: "けんこうこつ",
+        category: "arm_bone",
+        categoryName: "うでの骨",
+        categoryColor: "#3B82F6",
+        x: 72.5, y: 15.0,
+        shortDesc: "【赤枠 11 番】肩の奥・背中にある三角形の平たい骨！",
+        detail: "背部上部にある三角形の骨。鎖骨や上腕骨と関節をつくり、腕の動きを大きくサポートします。",
+        hint: "テスト番号【11】番！いわゆる「天使の羽」がある三角形の骨！",
+        textbookNote: "背部上部にある三角形の扁平骨。"
+      },
+      {
+        id: "bone_f_12",
+        name: "上肢帯",
+        kana: "じょうしたい",
+        category: "arm_bone",
+        categoryName: "うでの骨",
+        categoryColor: "#3B82F6",
+        x: 81.5, y: 13.5,
+        shortDesc: "【赤枠 12 番】鎖骨と肩甲骨からなる、腕を胴体につなぐベルト（帯）！",
+        detail: "鎖骨と肩甲骨の総称（肩甲帯ともいう）。自由上肢骨（腕の骨）を体幹骨につなぎ止める役割をします。",
+        hint: "テスト番号【12】番！鎖骨＋肩甲骨をセットで呼ぶ名前！腕をつなぐ「帯（ベルト）」だよ。",
+        textbookNote: "鎖骨と肩甲骨からなり、上肢を体幹に連結する。"
+      },
+      {
+        id: "bone_f_13",
+        name: "上腕骨",
+        kana: "じょうわんこつ",
+        category: "arm_bone",
+        categoryName: "うでの骨",
+        categoryColor: "#3B82F6",
+        x: 82.5, y: 24.5,
+        shortDesc: "【赤枠 13 番】肩からひじまでの太い二の腕の骨！",
+        detail: "上腕を構成する長骨。肩関節と肘関節をつなぐ太く頑丈な骨です。",
+        hint: "テスト番号【13】番！「上の腕（うで）の骨」！二の腕の中にあるよ！",
+        textbookNote: "肩から肘までの上腕を形成する骨。"
+      },
+      {
+        id: "bone_f_14",
+        name: "橈骨",
+        kana: "とうこつ",
+        category: "arm_bone",
+        categoryName: "うでの骨",
+        categoryColor: "#3B82F6",
+        x: 82.5, y: 35.0,
+        shortDesc: "【赤枠 14 番】前腕（ひじから手首）の「親指側」にある骨！",
+        detail: "前腕の親指側にある骨。手首を回す（回内・回外）ときに尺骨のまわりを回転します。",
+        hint: "テスト番号【14】番！「親指側」が橈骨（とうこつ）！脈をとる場所だよ。",
+        textbookNote: "前腕の親指側にある骨。"
+      },
+      {
+        id: "bone_f_15",
+        name: "尺骨",
+        kana: "しゃっこつ",
+        category: "arm_bone",
+        categoryName: "うでの骨",
+        categoryColor: "#3B82F6",
+        x: 82.5, y: 38.0,
+        shortDesc: "【赤枠 15 番】前腕（ひじから手首）の「小指側」にある骨！",
+        detail: "前腕の小指側にある骨。上端の肘頭がひじのとがった部分を作ります。（＊「しゃくこつ」とも読みます）",
+        hint: "テスト番号【15】番！「小指側」が尺骨（しゃっこつ）！昔の長さをはかる『尺』が語源！",
+        textbookNote: "前腕の小指側にある骨。しゃっこつ、しゃくこつと読む。"
+      },
+      {
+        id: "bone_f_16",
+        name: "大腿骨",
+        kana: "だいたいこつ",
+        category: "leg_bone",
+        categoryName: "あしの骨",
+        categoryColor: "#8B5CF6",
+        x: 81.5, y: 57.5,
+        shortDesc: "【赤枠 16 番】太ももを通る、体の中で一番長くて太い最強の骨！",
+        detail: "人体で最長・最大の長骨。全体重を支えて骨盤とひざ関節をつなぎます。",
+        hint: "テスト番号【16】番！「大きな腿（もも）の骨」！人体最長・最強の骨だよ！",
+        textbookNote: "人体の中で最長・最大の骨。"
+      },
+      {
+        id: "bone_f_17",
+        name: "膝蓋骨",
+        kana: "しつがいこつ",
+        category: "leg_bone",
+        categoryName: "あしの骨",
+        categoryColor: "#8B5CF6",
+        x: 80.5, y: 67.0,
+        shortDesc: "【赤枠 17 番】丸で囲まれたひざの骨！いわゆる「ひざのお皿」！",
+        detail: "大腿四頭筋の腱の中にある種子骨。ひざ関節の前面を保護し、ひざを伸ばす力をテコの原理で効率化します。",
+        hint: "テスト番号【17】番！いわゆる「ひざの皿」！丸印で強調されている超重要骨！",
+        textbookNote: "ひざ関節の前面にある種子骨。いわゆる膝の皿。"
+      },
+      {
+        id: "bone_f_18",
+        name: "腓骨",
+        kana: "ひこつ",
+        category: "leg_bone",
+        categoryName: "あしの骨",
+        categoryColor: "#8B5CF6",
+        x: 80.0, y: 74.5,
+        shortDesc: "【赤枠 18 番】すねの「外側」にある細い骨！手書きメモあり！",
+        detail: "すねの外側にある細長い骨。脛骨に寄り添い、下端が外くるぶし（外果）をつくります。",
+        hint: "テスト番号【18】番！すねの外側にある細いほうの骨！教科書にも手書きでメモが入っているよ！",
+        textbookNote: "下腿の外側にある細い骨。外果をつくる。"
+      },
+      {
+        id: "bone_f_19",
+        name: "脛骨",
+        kana: "けいこつ",
+        category: "leg_bone",
+        categoryName: "あしの骨",
+        categoryColor: "#8B5CF6",
+        x: 80.0, y: 79.5,
+        shortDesc: "【赤枠 19 番】すねの「内側」にある太い骨！「弁慶の泣き所」だよ。",
+        detail: "すねの内側にある太く頑丈な骨。大腿骨からの全体重を支えて足首に伝えます。",
+        hint: "テスト番号【19】番！すねのメインの太い骨！ぶつけると涙が出るほど痛い場所！",
+        textbookNote: "下腿の内側にある太い骨。体重を支える。"
+      }
+    ]
+  },
+
+  // ========================================================
+  // 5. 骨格（後面）
   // ========================================================
   {
     id: "skeleton_back",
     name: "骨格（後面）",
-    icon: "💀",
-    desc: "頭から足先まで、体を支える人体の骨（全14部位＋脊柱区分）",
+    icon: "🦴",
+    desc: "頭から足先まで、体を後ろから支える人体の骨（全14部位＋脊柱区分）",
     image: "assets/skeleton_back.jpg",
     aspectRatio: "703 / 1024",
     masks: [
@@ -533,7 +801,7 @@ const APP_THEMES = [
     ],
     items: [
       {
-        id: "skull",
+        id: "skull_b",
         name: "頭蓋骨",
         kana: "とうがいこつ",
         category: "trunk_bone",
@@ -542,11 +810,11 @@ const APP_THEMES = [
         x: 40.5, y: 6.5,
         shortDesc: "脳を包んで守るヘルメットのような頑丈な骨！",
         detail: "脳を保護する脳頭蓋と、顔面を構成する顔面頭蓋からなる骨の集まりです。",
-        hint: "「頭（あたま）のフタ（蓋）の骨」！大切な脳を24時間守っているよ！",
+        hint: "「頭（あたま）のフタ（蓋）の骨」！大切な脳を24時間守っているよ。",
         textbookNote: "脳を保護し、顔面を形成する骨格。"
       },
       {
-        id: "clavicle",
+        id: "clavicle_b",
         name: "鎖骨",
         kana: "さこつ",
         category: "upper_bone",
@@ -555,11 +823,11 @@ const APP_THEMES = [
         x: 30.0, y: 15.0,
         shortDesc: "首の下で横に伸びるS字形の骨。肩を支えるよ！",
         detail: "胸骨と肩甲骨をつなぐ横長の骨。腕の自由な動きを支えています。",
-        hint: "首の下にある横に長い骨！折れやすい骨としても有名だよ。",
+        hint: "首の下にある横に長い骨！肩と胸をつないで腕を動かしやすくするよ。",
         textbookNote: "胸骨と肩甲骨を連結する骨。"
       },
       {
-        id: "scapula",
+        id: "scapula_b",
         name: "肩甲骨",
         kana: "けんこうこつ",
         category: "upper_bone",
@@ -572,7 +840,7 @@ const APP_THEMES = [
         textbookNote: "背部上部にある三角形の扁平骨。"
       },
       {
-        id: "humerus",
+        id: "humerus_b",
         name: "上腕骨",
         kana: "じょうわんこつ",
         category: "upper_bone",
@@ -585,7 +853,7 @@ const APP_THEMES = [
         textbookNote: "肩から肘までの上腕を形成する長骨。"
       },
       {
-        id: "ribs",
+        id: "ribs_b",
         name: "肋骨",
         kana: "ろっこつ",
         category: "trunk_bone",
@@ -598,7 +866,7 @@ const APP_THEMES = [
         textbookNote: "胸郭を形成し、胸部内臓を保護する骨。"
       },
       {
-        id: "radius",
+        id: "radius_b",
         name: "橈骨",
         kana: "とうこつ",
         category: "upper_bone",
@@ -611,7 +879,7 @@ const APP_THEMES = [
         textbookNote: "前腕の親指側にある長骨。"
       },
       {
-        id: "ulna",
+        id: "ulna_b",
         name: "尺骨",
         kana: "しゃっこつ",
         category: "upper_bone",
@@ -624,7 +892,7 @@ const APP_THEMES = [
         textbookNote: "前腕の小指側にある長骨。肘頭をつくる。"
       },
       {
-        id: "hand_bones",
+        id: "hand_bones_b",
         name: "手の骨",
         kana: "てのほね",
         category: "upper_bone",
@@ -637,7 +905,7 @@ const APP_THEMES = [
         textbookNote: "手根骨・中手骨・指骨で構成される。"
       },
       {
-        id: "hip_bone",
+        id: "hip_bone_b",
         name: "寛骨",
         kana: "かんこつ",
         category: "lower_bone",
@@ -650,7 +918,7 @@ const APP_THEMES = [
         textbookNote: "腸骨・恥骨・坐骨が癒合した骨。骨盤を構成。"
       },
       {
-        id: "sacrum",
+        id: "sacrum_b",
         name: "仙骨",
         kana: "せんこつ",
         category: "trunk_bone",
@@ -663,7 +931,7 @@ const APP_THEMES = [
         textbookNote: "5個の仙椎が癒合した骨。骨盤後壁をなす。"
       },
       {
-        id: "coccyx",
+        id: "coccyx_b",
         name: "尾骨",
         kana: "びこつ",
         category: "trunk_bone",
@@ -676,7 +944,7 @@ const APP_THEMES = [
         textbookNote: "仙骨の下端に続く尾椎の癒合骨。"
       },
       {
-        id: "femur",
+        id: "femur_b",
         name: "大腿骨",
         kana: "だいたいこつ",
         category: "lower_bone",
@@ -689,7 +957,7 @@ const APP_THEMES = [
         textbookNote: "人体の中で最長・最大の長骨。"
       },
       {
-        id: "tibia",
+        id: "tibia_b",
         name: "脛骨",
         kana: "けいこつ",
         category: "lower_bone",
@@ -702,7 +970,7 @@ const APP_THEMES = [
         textbookNote: "下腿の内側にある太い長骨。体重を支える。"
       },
       {
-        id: "fibula",
+        id: "fibula_b",
         name: "腓骨",
         kana: "ひこつ",
         category: "lower_bone",
@@ -715,7 +983,7 @@ const APP_THEMES = [
         textbookNote: "下腿の外側にある細い長骨。外果をつくる。"
       },
       {
-        id: "cervical",
+        id: "cervical_b",
         name: "頸椎（20）",
         kana: "けいつい",
         category: "spine",
@@ -728,7 +996,7 @@ const APP_THEMES = [
         textbookNote: "首にある7個の椎骨。"
       },
       {
-        id: "thoracic",
+        id: "thoracic_b",
         name: "胸椎（21）",
         kana: "きょうつい",
         category: "spine",
@@ -741,7 +1009,7 @@ const APP_THEMES = [
         textbookNote: "肋骨と関節をつくる12個の椎骨。"
       },
       {
-        id: "lumbar",
+        id: "lumbar_b",
         name: "腰椎（22）",
         kana: "ようつい",
         category: "spine",
@@ -754,7 +1022,7 @@ const APP_THEMES = [
         textbookNote: "腰部にある5個の大きく頑丈な椎骨。"
       },
       {
-        id: "vertebral_column",
+        id: "vertebral_column_b",
         name: "脊柱（23）",
         kana: "せきちゅう",
         category: "spine",
