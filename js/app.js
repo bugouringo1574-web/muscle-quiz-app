@@ -590,16 +590,17 @@ class MasterApp {
     this.dom.clearModal.classList.add('show');
   }
 
-  // スマホ用QRコード生成
+  // スマホ用QRコード生成（永続的な公式Web URL）
   initQRCode() {
-    const mobileUrl = `http://${this.localIp}:${this.serverPort}/`;
-    this.dom.qrUrlText.textContent = mobileUrl;
+    const permanentUrl = "https://bugouringo1574-web.github.io/muscle-quiz-app/";
+    this.dom.qrUrlText.textContent = permanentUrl;
 
     if (window.QRCode) {
+      this.dom.qrContainer.innerHTML = '';
       new QRCode(this.dom.qrContainer, {
-        text: mobileUrl,
-        width: 180,
-        height: 180,
+        text: permanentUrl,
+        width: 190,
+        height: 190,
         colorDark: "#1e1b4b",
         colorLight: "#ffffff",
         correctLevel: QRCode.CorrectLevel.M
